@@ -1,5 +1,5 @@
 # Write your MySQL query statement below
-SELECT distinct viewer_id AS id
+SELECT distinct author_id AS id
 FROM Views
 WHERE viewer_id=author_id ORDER BY id
 
