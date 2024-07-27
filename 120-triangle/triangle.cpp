@@ -2,8 +2,8 @@ class Solution {
 public:
     int func(int i, int j,vector<vector<int>>&triangle, vector<vector<int>>&dp){
         int n = triangle.size();
-        if(i>=n) return 0;
-        if(j>i) return 0;
+        // if(i>=n) return 0; //no need of following test cases
+        // if(j>i) return 0;
         if(i==n-1) return triangle[i][j];
 
         if(dp[i][j]!=-1) return dp[i][j];
@@ -15,7 +15,6 @@ public:
     }
     int minimumTotal(vector<vector<int>>& triangle) {
         int n = triangle.size();
-        int m = triangle[n-1].size();
 
         vector<vector<int>>dp(n,vector<int>(n,-1));
 
