@@ -12,17 +12,21 @@
 class Solution {
 public:
     void func(TreeNode* root,vector<string> &ans,string temp){
-        
+        if(root==nullptr) return;
         temp+=to_string(root->val);
 
-        if(root->left) func(root->left,ans,temp+"->");
-        if(root->right) func(root->right,ans,temp+"->");
+        if(root->left==nullptr && root->right==nullptr) ans.push_back(temp);
+        else {
+            temp+="->";
+            func(root->left,ans,temp);
+            func(root->right,ans,temp);
+        }
+        temp.pop_back();    
         
-        if(root->left==NULL && root->right==NULL) ans.push_back(temp);
     }
     vector<string> binaryTreePaths(TreeNode* root) {
         vector<string> ans;
-        string temp;
+        string temp="";
         func(root,ans,temp);
         return ans;
     }
