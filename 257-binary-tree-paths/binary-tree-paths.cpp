@@ -21,7 +21,6 @@ public:
             func(root->left,ans,temp);
             func(root->right,ans,temp);
         }
-        temp.pop_back();    
         
     }
     vector<string> binaryTreePaths(TreeNode* root) {
