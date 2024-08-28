@@ -1,4 +1,4 @@
-SELECT customer_id, COUNT(visit_id) AS count_no_trans
+SELECT customer_id, COUNT(*) AS count_no_trans
 FROM Visits as a 
 LEFT JOIN Transactions as b
 USING(visit_id)
