@@ -17,11 +17,11 @@ public:
             }
             else if(nums1[i]<nums2[j]){
                 i++;
-                while(i<n && nums1[i-1]==nums1[i]) i++;
+               // while(i<n && nums1[i-1]==nums1[i]) i++;
             }
             else{
                 j++;
-                while(j<m && nums2[j-1]==nums2[j])j++;                
+               // while(j<m && nums2[j-1]==nums2[j])j++;                
             }
         }
         return ans;
