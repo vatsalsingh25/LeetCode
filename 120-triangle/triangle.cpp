@@ -1,23 +1,19 @@
 class Solution {
 public:
-    int func(int i, int j,vector<vector<int>>&triangle, vector<vector<int>>&dp){
+    int func(vector<vector<int>>& triangle, int i, int j, vector<vector<int>>&dp){
         int n = triangle.size();
-        // if(i>=n) return 0; //no need of following test cases
-        // if(j>i) return 0;
-        if(i==n-1) return triangle[i][j];
+        if(i==n-1) return triangle[n-1][j];
 
         if(dp[i][j]!=-1) return dp[i][j];
 
-        int down = triangle[i][j]+func(i+1,j,triangle,dp);
-        int diagonal = triangle[i][j]+func(i+1,j+1,triangle,dp);
+        int down = triangle[i][j]+func(triangle, i+1, j, dp);
+        int up = triangle[i][j]+func(triangle, i+1, j+1, dp);
 
-        return dp[i][j]=min(down,diagonal);
+        return dp[i][j]=min(down,up);
     }
     int minimumTotal(vector<vector<int>>& triangle) {
         int n = triangle.size();
-
         vector<vector<int>>dp(n,vector<int>(n,-1));
-
-        return func(0,0,triangle,dp);
+        return func(triangle, 0, 0, dp);
     }
 };
