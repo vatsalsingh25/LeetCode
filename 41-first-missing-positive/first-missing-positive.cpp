@@ -8,8 +8,9 @@ public:
         }
 
         for(int i=0; i<nums.size(); i++){
-            if(abs(nums[i])!=n+1){
-                if(nums[abs(nums[i])-1]>0) nums[abs(nums[i])-1]*=-1;
+            int num = abs(nums[i]);
+            if(num!=n+1){
+                if(nums[num-1]>0) nums[num-1]*=-1;
             } 
         }
         
