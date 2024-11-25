@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int func(vector<int>& nums, int k){
+    int minForWindowSize(vector<int>& nums, int k){
         int n = nums.size();
         int sum = 0;
         for(int i=0; i<k; i++){
@@ -20,7 +20,7 @@ public:
     int minimumSumSubarray(vector<int>& nums, int l, int r) {
         int ans = INT_MAX;
         for(int i=l; i<=r; i++){
-            ans = min(ans, func(nums,i));
+            ans = min(ans, minForWindowSize(nums,i));
         }
         if(ans == INT_MAX) return -1;
         return ans;
