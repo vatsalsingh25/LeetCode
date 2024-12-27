@@ -7,7 +7,7 @@ public:
         while(l<n && r<n){
             while(l<n && nums[l]==0){
                 l++;
-                r=l;
+                r=l+1;
             } 
             if(r<n && nums[r]==0){
                 swap(nums[l],nums[r]);
@@ -20,7 +20,7 @@ public:
         while(l>=0 && r>=0){
             while(l>=0 && nums[l]==2){
                 l--;
-                r=l;
+                r=l-1;
             } 
             if(r>=0 && nums[r]==2){
                 swap(nums[l],nums[r]);
