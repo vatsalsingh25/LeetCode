@@ -18,6 +18,6 @@ public:
             if(nums[i]<=nums[smallestGreater] && nums[i]>nums[breakPoint]) smallestGreater=i;
         }
         swap(nums[breakPoint],nums[smallestGreater]);
-        sort(nums.begin()+breakPoint+1, nums.end());
+        reverse(nums.begin()+breakPoint+1, nums.end());
     }
 };
