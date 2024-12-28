@@ -6,10 +6,10 @@ public:
         if(n<0) absN = -(long long)n;
         while(absN>0){
             if(absN%2==0){
-                x*=x;
-                absN/=2;
+                x=x*x;
+                absN=absN/2;
             }else{
-                product*=x;
+                product=product*x;
                 absN--;
             }
         }
