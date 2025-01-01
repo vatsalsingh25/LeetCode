@@ -8,7 +8,7 @@ public:
             if(s[i]=='0') zero++;
             else one++;
         }
-        if (zero==n || one==n) return n-1;
+        //if (zero==n || one==n) return n-1;
         int currZero = 0, leftZero = zero;
         int currOne = 0, leftOne = one;
         int sum = INT_MIN;
