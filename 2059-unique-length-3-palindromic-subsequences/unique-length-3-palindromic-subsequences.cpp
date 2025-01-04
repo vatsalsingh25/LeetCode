@@ -8,8 +8,7 @@ public:
         for(int i=0; i<n; i++){
             if(st2.find(s[i])==st2.end()){
                 for(int j=n-1; j>=i+2; j--){
-                    if( s[i]==s[j] && st2.find(s[i])==st2.end() ){
-                        
+                    if( s[i]==s[j] ){
                         for(int k=i+1; k<j; k++){
                             string ss = "";
                             ss+=s[i];
