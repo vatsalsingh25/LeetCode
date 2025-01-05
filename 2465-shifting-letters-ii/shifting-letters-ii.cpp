@@ -19,7 +19,7 @@ public:
         // prefix sum to calculate the net change
         int prefSum = 0;
         for(int i=0; i<n; i++){
-            prefSum = (prefSum+diffArr[i])%26;
+            prefSum = (prefSum+diffArr[i])%26;  //wrap around if exceeds the alphabet range
             if(prefSum>=0) s[i] = 'a'+(s[i]-'a'+prefSum)%26;  // adjusting the values according to the pref sum
             else s[i] = 'a'+(s[i]-'a'+prefSum+26)%26; // if looping backwards, add 26 to get back in range
         }
