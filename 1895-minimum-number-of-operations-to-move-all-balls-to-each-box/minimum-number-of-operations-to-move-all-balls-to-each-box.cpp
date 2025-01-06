@@ -17,15 +17,10 @@ public:
         int movesFromRight = 0;
         for(int i=n-1; i>=0; i--){
             movesFromRight+=ballOnRight;
-            suffArr[i]=movesFromRight;
+            suffArr[i]=movesFromRight+prefArr[i];
             if(boxes[i]=='1') ballOnRight++;
         }
 
-        vector<int>ans(n);
-        for(int i=0; i<n; i++){
-            ans[i]=prefArr[i]+suffArr[i];
-        }
-
-        return ans;
+        return suffArr;
     }
 };
