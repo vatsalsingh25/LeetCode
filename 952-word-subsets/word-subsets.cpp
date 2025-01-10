@@ -1,40 +1,41 @@
 class Solution {
 public:
-    // Helper function to check if a word satisfies the universal condition
-    bool isUniversal(const string& a, const unordered_map<char, int>& mppW2) {
-        unordered_map<char, int> wordFreq;
-        for (char ch : a) {
-            wordFreq[ch]++;
-        }
-        for (const auto& [ch, freq] : mppW2) {
-            if (wordFreq[ch] < freq) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     vector<string> wordSubsets(vector<string>& words1, vector<string>& words2) {
-        unordered_map<char, int> mppW2;
+        unordered_map<char, int> globalFreq;
 
-        // Build the maximum frequency map for words2
+        // Step 1: Build the global frequency map for words2
         for (const string& word : words2) {
-            unordered_map<char, int> temp;
+            unordered_map<char, int> wordFreq;
             for (char ch : word) {
-                temp[ch]++;
+                wordFreq[ch]++;
             }
-            for (const auto& [ch, freq] : temp) {
-                mppW2[ch] = max(freq, mppW2[ch]);
+            for (const auto& [ch, freq] : wordFreq) {
+                globalFreq[ch] = max(globalFreq[ch], freq);
             }
         }
 
-        vector<string> ans;
-        // Check each word in words1
+        vector<string> result;
+
+        // Step 2: Check each word in words1
         for (const string& word : words1) {
-            if (isUniversal(word, mppW2)) {
-                ans.push_back(word);
+            unordered_map<char, int> wordFreq;
+            for (char ch : word) {
+                wordFreq[ch]++;
+            }
+
+            bool isUniversal = true;
+            for (const auto& [ch, freq] : globalFreq) {
+                if (wordFreq[ch] < freq) {
+                    isUniversal = false;
+                    break;
+                }
+            }
+
+            if (isUniversal) {
+                result.push_back(word);
             }
         }
-        return ans;
+
+        return result;
     }
 };
