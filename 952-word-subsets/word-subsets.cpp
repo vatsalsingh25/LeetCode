@@ -1,6 +1,7 @@
 class Solution {
 public:
-    bool isUniversal(string a, unordered_map<char,int>mppW2){
+    // Helper function to check if a word satisfies the universal condition
+    bool isUniversal(const string& a, const unordered_map<char, int>& mppW2) {
         unordered_map<char, int> wordFreq;
         for (char ch : a) {
             wordFreq[ch]++;
@@ -12,21 +13,27 @@ public:
         }
         return true;
     }
+
     vector<string> wordSubsets(vector<string>& words1, vector<string>& words2) {
-        unordered_map<char,int>mppW2;
-        for(int i=0; i<words2.size(); i++){
-            unordered_map<char,int>temp;
-            for(int j=0; j<words2[i].size(); j++){
-                temp[words2[i][j]]++;
+        unordered_map<char, int> mppW2;
+
+        // Build the maximum frequency map for words2
+        for (const string& word : words2) {
+            unordered_map<char, int> temp;
+            for (char ch : word) {
+                temp[ch]++;
             }
-            for(auto it: temp){
-                if(mppW2.find(it.first)==mppW2.end()) mppW2[it.first]=it.second;
-                else mppW2[it.first]=max(it.second, mppW2[it.first]);
+            for (const auto& [ch, freq] : temp) {
+                mppW2[ch] = max(freq, mppW2[ch]);
             }
         }
+
         vector<string> ans;
-        for(int i=0; i<words1.size(); i++){
-            if(isUniversal(words1[i],mppW2)) ans.push_back(words1[i]); 
+        // Check each word in words1
+        for (const string& word : words1) {
+            if (isUniversal(word, mppW2)) {
+                ans.push_back(word);
+            }
         }
         return ans;
     }
