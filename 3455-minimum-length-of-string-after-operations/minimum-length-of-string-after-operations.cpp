@@ -7,11 +7,8 @@ public:
         }
         int count = 0;
         for(auto it: freq){
-            if(it.second<3) count+=it.second;
-            else{
-               if(it.second%2==1) count+=1;
-               else count+=2; 
-            }
+            if(it.second%2==1) count+=1;
+            else count+=2; 
         }
         return count;
     }
