@@ -18,7 +18,6 @@ public:
             vector<int>loc = location[arr[i]];
             int r = loc[0];
             int c = loc[1];
-            mat[r][c]=0;
             rfreq[r]++;
             cfreq[c]++;
             if(rfreq[r]==n || cfreq[c]==m) return i;
