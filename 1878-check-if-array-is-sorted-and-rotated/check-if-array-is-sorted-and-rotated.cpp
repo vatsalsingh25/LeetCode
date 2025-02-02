@@ -1,12 +1,14 @@
 class Solution {
 public:
     bool check(vector<int>& nums) {
-        int count = 0;
-        for(int i=0; i<nums.size()-1; i++){
-            if(nums[i]>nums[i+1]) count++;
+        int n = nums.size();
+        int fluctuation = 0;
+        for(int i=0; i<n-1; i++){
+            if(nums[i]>nums[i+1]) fluctuation++;
         }
-        if(nums[nums.size()-1]>nums[0]) count++;
-        if(count==1 || count==0) return true;
+        if(nums[n-1]>nums[0]) fluctuation++;
+
+        if(fluctuation == 1 || fluctuation == 0) return true;
         return false;
     }
 };
