@@ -1,23 +1,26 @@
 class Solution {
 public:
-    // int func(int n, int k){
-    //     if(n==0) return 0;
-    //     return (func(n-1,k)+k)%n;
-    // }
-    // int findTheWinner(int n, int k) {
-    //     return func(n,k)+1; //1 based indexing
-    // }
     int findTheWinner(int n, int k) {
-        vector<int>players;
-        for(int i=1; i<=n; i++){
-            players.push_back(i);
+        vector<int> players(n, 0); // 0 means player is still in the game
+        int count = 0; // Number of eliminated players
+        int index = 0; // Start from the first player
+        
+        while (count < n - 1) { // Stop when only one player remains
+            int steps = k; 
+            while (steps > 0) {
+                if (players[index] == 0) { // Only count active players
+                    steps--;
+                }
+                if (steps > 0) index = (index + 1) % n; // Move to the next player
+            }
+            players[index] = 1; // Eliminate the player
+            count++;
+            // Move to the next available player
+            while (players[index] == 1) {
+                index = (index + 1) % n;
+            }
         }
-        int startInd = 0;
-        while(players.size()>1){
-            int removeInd = (startInd+k-1)%players.size();
-            players.erase(players.begin()+removeInd);
-            startInd = removeInd; // since the previous index is deleted, remove index automatically takes next place
-        }
-        return players[0];
+        
+        return index + 1; // Return 1-based index of the winner
     }
 };
