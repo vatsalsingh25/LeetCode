@@ -6,7 +6,7 @@ public:
         int empty = 0;
         int ans = 0;
 
-        while(full>0 || empty>=k){
+        while(1){
             if(empty==0){
                 empty+=full;
                 ans+=full;
