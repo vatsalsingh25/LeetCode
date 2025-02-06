@@ -6,8 +6,8 @@ public:
         int empty = 0;
         int ans = 0;
 
-        while(1){
-            if(empty==0){
+        while(full>0 || empty>=k){
+            if(full>0 && empty<k){
                 empty+=full;
                 ans+=full;
                 full=0;
@@ -17,11 +17,11 @@ public:
                 empty-=k;
                 k++;
             }
-            else if(full>0 && empty<k){
-                empty+=full;
-                ans+=full;
-                full=0;
-            }
+            // else if(full>0 && empty<k){
+            //     empty+=full;
+            //     ans+=full;
+            //     full=0;
+            // }
             else break;
         }
         return ans;
