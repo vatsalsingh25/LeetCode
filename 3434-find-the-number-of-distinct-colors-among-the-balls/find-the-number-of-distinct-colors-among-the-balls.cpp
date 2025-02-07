@@ -11,15 +11,15 @@ public:
             int color = queries[i][1];
 
             if(colorOfBall.find(num)==colorOfBall.end()){                  // ball not coloured
-                colorOfBall[num] = color;
-                colorCount[color]++;
+
             }
             else{                                                        //ball already present
                 colorCount[colorOfBall[num]]--;
                 if(colorCount[colorOfBall[num]]==0) colorCount.erase(colorOfBall[num]);
-                colorOfBall[num] = color;
-                colorCount[color]++;
+
             }
+            colorOfBall[num] = color;
+            colorCount[color]++;
 
             ans.push_back(colorCount.size());
         }
