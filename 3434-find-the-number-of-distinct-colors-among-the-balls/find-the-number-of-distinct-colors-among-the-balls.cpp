@@ -10,13 +10,9 @@ public:
             int num = queries[i][0];
             int color = queries[i][1];
 
-            if(colorOfBall.find(num)==colorOfBall.end()){                  // ball not coloured
-
-            }
-            else{                                                        //ball already present
+            if(colorOfBall.find(num)!=colorOfBall.end()){                  // ball not coloured
                 colorCount[colorOfBall[num]]--;
                 if(colorCount[colorOfBall[num]]==0) colorCount.erase(colorOfBall[num]);
-
             }
             colorOfBall[num] = color;
             colorCount[color]++;
