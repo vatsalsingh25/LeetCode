@@ -22,20 +22,18 @@ public:
             }
         }
         //validate box
-        for (int boxRow = 0; boxRow < 9; boxRow += 3) {  // Iterate over 3x3 box rows
-            for (int boxCol = 0; boxCol < 9; boxCol += 3) {  // Iterate over 3x3 box cols
-                map<char,int>hash;
-                // Traverse elements inside the current 3x3 box
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        int row = boxRow + i;
-                        int col = boxCol + j;
-                        hash[board[row][col]]++;
-                    }
-                }
-                for(auto it: hash){
-                    if(it.first!='.' && it.second>1) return false;
-                }
+        for (int i = 0; i < 9; i++) {  // Iterate over 3x3 boxes (0 to 8)
+            int boxRow = (i / 3) * 3;  // Top-left row of the box
+            int boxCol = (i % 3) * 3;  // Top-left col of the box
+
+            map<char,int>hash;
+            for (int j = 0; j < 9; j++) {  // Traverse inside the box
+                int row = boxRow + (j / 3);  // Row inside the box
+                int col = boxCol + (j % 3);  // Col inside the box
+                hash[board[row][col]]++;
+            }
+            for(auto it: hash){
+                if(it.first!='.' && it.second>1) return false;
             }
         }
         return true;
