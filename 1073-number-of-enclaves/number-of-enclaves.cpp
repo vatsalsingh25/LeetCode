@@ -8,24 +8,14 @@ public:
         queue<pair<int,int>>q;
 
         // traverse all the boundries and push all '1' points into queue
-        for(int j=0; j<n; j++){
-            if(grid[0][j]==1){
-                vis[0][j]=1; 
-                q.push({0,j});
-            } 
-            if(grid[m-1][j]==1){
-                vis[m-1][j]=1;
-                q.push({m-1,j});
-            } 
-        }
         for(int i=0; i<m; i++){
-            if(grid[i][0]==1){
-                vis[i][0]=1; 
-                q.push({i,0});
-            } 
-            if(grid[i][n-1]==1){
-                vis[i][n-1]=1; 
-                q.push({i,n-1});
+            for(int j=0; j<n; j++){
+                if(i==0 || j==0 || i==m-1 || j==n-1){
+                    if(grid[i][j]==1){
+                        vis[i][j]=1;
+                        q.push({i,j});
+                    }
+                }
             } 
         }
 
