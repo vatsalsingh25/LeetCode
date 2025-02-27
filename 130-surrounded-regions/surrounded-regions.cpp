@@ -21,15 +21,15 @@ public:
         
         //traverse top and bottom boundry
         for(int j=0; j<n; j++){
-            if(board[0][j]=='O') dfs(0,j,board,vis);
-            if(board[m-1][j]=='O') dfs(m-1,j,board,vis);
+            if(board[0][j]=='O' && !vis[0][j]) dfs(0,j,board,vis);
+            if(board[m-1][j]=='O' && !vis[m-1][j]) dfs(m-1,j,board,vis);
         }
 
 
         //traverse top and bottom boundry
         for(int i=0; i<m; i++){
-            if(board[i][0]=='O') dfs(i,0,board,vis);
-            if(board[i][n-1]=='O') dfs(i,n-1,board,vis);
+            if(board[i][0]=='O' && !vis[i][0]) dfs(i,0,board,vis);
+            if(board[i][n-1]=='O' && !vis[i][n-1]) dfs(i,n-1,board,vis);
         }
 
 
