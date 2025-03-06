@@ -1,12 +1,10 @@
 class Solution {
 public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        set<string>st;
         queue<pair<string,int>>q;
         q.push({beginWord,1});
-        for(int i=0; i<wordList.size(); i++){
-            st.insert(wordList[i]);
-        }
+        set<string>st(wordList.begin(),wordList.end());
+
         while(!q.empty()){
             string s = q.front().first;
             int num = q.front().second;
