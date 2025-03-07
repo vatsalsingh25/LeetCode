@@ -2,9 +2,10 @@ class Solution {
 private: 
     //implementing dfs traversal algo
     void dfs(int node, vector<vector<int>>&adj, vector<int>&visited){
+        if(visited[node]==1) return;
         visited[node]=1;
         for(auto it: adj[node]){
-            if(!visited[it]) dfs(it,adj,visited);                
+            dfs(it,adj,visited);                
         }
     }
 public:
