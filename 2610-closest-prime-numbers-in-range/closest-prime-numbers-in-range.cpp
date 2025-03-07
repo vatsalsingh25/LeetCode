@@ -23,9 +23,11 @@ public:
                         a = prev;
                         b = i;
                     }
+                    if(diff<=2) return {a,b};
                 }
                 prev = i;
             } 
+            
         }
 
         return {a,b};
