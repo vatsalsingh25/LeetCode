@@ -3,7 +3,7 @@ public:
     int numberOfSubstrings(string s) {
         int n = s.size(); 
         unordered_map<char,int>hash;
-        hash['a']=hash['b']=hash['c']=0;
+        //hash['a']=hash['b']=hash['c']=0;
         int l=0, r=0; 
         int count = 0;
         while(r<n){
