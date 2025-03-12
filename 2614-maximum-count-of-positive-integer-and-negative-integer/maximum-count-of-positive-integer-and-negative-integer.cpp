@@ -2,15 +2,15 @@ class Solution {
 public:
     int binarySearch(vector<int>& nums, int k){
         int n = nums.size();
-        int l = 0;
-        int h = n-1;
+        int low = 0;
+        int high = n-1;
 
-        while(l<=h){
-            int mid = (l+h)/2;
-            if(nums[mid]>=k) h = mid-1;
-            else l = mid+1;
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(nums[mid]>=k) high = mid-1;
+            else low = mid+1;
         }
-        return l;
+        return low;
     }
     int maximumCount(vector<int>& nums) {
         int n = nums.size();
