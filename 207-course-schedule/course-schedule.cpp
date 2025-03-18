@@ -1,42 +1,42 @@
 class Solution {
-private:
-    bool dfs( int node, vector<int>&vis, vector<vector<int>>&adj, vector<int>&pathVis){
 
-        vis[node] = 1;
-        pathVis[node] = 1;
-
-        for(auto it: adj[node]){
-            if(!vis[it]) {
-                if( dfs(it,vis,adj,pathVis) == true ) return true;
-            }
-            else{
-                if(pathVis[it]==1) return true;
-            }
-        }
-        
-        pathVis[node] = 0;
-        return false;
-    }
 public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         int n = numCourses;
 
         //creating adjecency matrix
         vector<vector<int>>adj(n);
+        //creating indegree array
+        vector<int>indegree(n,0);
         for(int i=0; i<prerequisites.size(); i++){
             adj[prerequisites[i][1]].push_back(prerequisites[i][0]);    //ex1) 1 should be performed before 0 ie 1->0
+            indegree[prerequisites[i][0]]++;
         }
 
-        // create visited array
-        vector<int>vis(n,0);
-        // create path visited array
-        vector<int>pathVis(n,0);
-        //iterate over visited and call dfs for not visted nodes
+        //create queue to store nodes
+        queue<int>q;
         for(int i=0; i<n; i++){
-            if(!vis[i]){
-                if(dfs(i,vis,adj,pathVis)==true) return false;
-            }
+            if(indegree[i]==0) q.push(i);
         }
-        return true;
+        //create topo vector to store order
+        vector<int>topo;
+
+        //perform bfs
+        while(!q.empty()){
+
+            int node = q.front();
+            q.pop();
+            topo.push_back(node);
+
+            for(auto it: adj[node]){
+                indegree[it]--;
+                if(indegree[it]==0) q.push(it);
+            }
+
+        }
+
+        //check
+        if(topo.size()==n) return true;
+        else return false;
     }
 };
