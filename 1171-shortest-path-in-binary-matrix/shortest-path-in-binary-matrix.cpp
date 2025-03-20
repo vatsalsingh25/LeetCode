@@ -24,6 +24,7 @@ public:
                     
                     if(nrow>=0 && nrow<n && ncol>=0 && ncol<n && grid[nrow][ncol]==0 && dis+1 < distance[nrow][ncol]){
                         distance[nrow][ncol] = dis + 1;
+                        if(nrow==n-1 && ncol==n-1) return distance[n-1][n-1];
                         q.push({dis+1,{nrow,ncol}});
                     }
                 }
