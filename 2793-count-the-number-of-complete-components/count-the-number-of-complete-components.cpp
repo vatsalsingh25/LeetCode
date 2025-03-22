@@ -3,9 +3,8 @@ public:
     void dfs(int node, vector<vector<int>>adj, vector<int>&vis, int& nodesCnt, int& edgesCnt){
         vis[node]=1;
         nodesCnt++;
-        
+        edgesCnt+=adj[node].size();
         for(auto it: adj[node]){
-            edgesCnt++;
             if(!vis[it]){
                 dfs(it,adj,vis,nodesCnt,edgesCnt);
             }
