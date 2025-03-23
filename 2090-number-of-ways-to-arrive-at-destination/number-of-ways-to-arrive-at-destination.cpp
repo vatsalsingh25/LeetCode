@@ -28,7 +28,7 @@ public:
             for(auto it: adj[node]){
                 int adjNode = it.first;
                 int wt = it.second;
-
+                //first time arriving with a short time
                 if(wt+dist<distance[adjNode]){
                     distance[adjNode] = wt+dist;
                     ways[adjNode] = ways[node];
