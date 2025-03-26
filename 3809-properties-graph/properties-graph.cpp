@@ -12,6 +12,24 @@ public:
         }
         return count;
     }
+    void bfs(int node, vector<int>&vis, vector<vector<int>>&adj){
+        queue<int>q;
+        vis[node] = 1;
+
+        q.push(node);
+
+        while(!q.empty()){
+            int currNode = q.front();
+            q.pop();
+
+            for(auto it: adj[currNode]){
+                if(!vis[it]){
+                    vis[it] = 1;
+                    q.push(it);
+                }
+            }
+        }
+    }
 
     int numberOfComponents(vector<vector<int>>& properties, int k) {
         int n = properties.size();
@@ -31,24 +49,10 @@ public:
 
         vector<int>vis(n,0);
         int count = 0;
-        queue<int>q;
         for(int i=0; i<n; i++){
             if(!vis[i]){
+                bfs(i,vis,adj);
                 count++;
-                q.push(i);
-                vis[i]=1;
-
-                while(!q.empty()){
-                    int currNode = q.front();
-                    q.pop();
-
-                    for(auto it: adj[currNode]){
-                        if(!vis[it]){
-                            vis[it] = 1;
-                            q.push(it);
-                        }
-                    }
-                }
             }
         }
 
