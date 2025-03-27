@@ -17,7 +17,7 @@ public:
         int countDomL = 0;
         int countDomR = count;
 
-        for(int i=0; i<n; i++){
+        for(int i=0; i<n-1; i++){
             if(nums[i]==dominant){
                 countDomL++;
                 countDomR--;
