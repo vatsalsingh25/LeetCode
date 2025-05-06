@@ -3,30 +3,27 @@ public:
     string minWindow(string s, string t) {
         if(t.size()>s.size()) return "";
         unordered_map<char,int>tHash;
-        unordered_map<char,int>windowHash;
 
         for(int i=0; i<t.size(); i++){
             tHash[t[i]]++;
         }
 
-        int have=0, need=tHash.size();
+        int count = t.size();
         int l=0, r=0, mini=INT_MAX;
         pair<int,int>substring;
 
         while(r<s.size()){
-            if(tHash.find(s[r])!=tHash.end()){
-                windowHash[s[r]]++;
-                if(windowHash[s[r]]==tHash[s[r]]) have++;
+            if(tHash[s[r]]-- > 0){
+                count--;
             }
 
-            while(have>=need){
+            while(count==0){
                 if(r-l+1<mini){
                     mini = r-l+1;
                     substring = {l,r};
                 }
-                if(tHash.find(s[l])!=tHash.end()){
-                    windowHash[s[l]]--;
-                    if(windowHash[s[l]]<tHash[s[l]]) have--;
+                if(tHash[s[l]]++ == 0){
+                    count++;
                 } 
                 l++;
             }
