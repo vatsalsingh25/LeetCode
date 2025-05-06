@@ -13,18 +13,21 @@ public:
         pair<int,int>substring;
 
         while(r<s.size()){
-            if(tHash[s[r]]-- > 0){
+            
+            if(tHash[s[r]] > 0){
                 count--;
             }
-
+            tHash[s[r]]--;
             while(count==0){
                 if(r-l+1<mini){
                     mini = r-l+1;
                     substring = {l,r};
                 }
-                if(tHash[s[l]]++ == 0){
+                
+                if(tHash[s[l]] == 0){
                     count++;
                 } 
+                tHash[s[l]]++;
                 l++;
             }
             r++;
